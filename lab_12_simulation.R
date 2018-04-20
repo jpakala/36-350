@@ -34,3 +34,15 @@ run_simulation(1, 1000, 50, 0.05)
 run_simulation(1, 10000, 10, 0.05)
 run_simulation(1, 10000, 20, 0.05)
 run_simulation(1, 10000, 50, 0.05)
+
+make_plot = function(datapath){
+  hist(datapath)
+}
+
+run_simulation_new = function(n_trials, n, p, cutoff){
+  for(i in 1:n_trials){
+    x = generate_data(n, p)
+    result = model_select(x$covariates, x$responses, cutoff)
+    make_plot(result)
+  }
+}
